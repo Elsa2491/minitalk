@@ -2,7 +2,7 @@ SERVER = server
 CLIENT = client
 #BONUS_NAME = fractol_bonus
 PRINTF = ./printf/libftprintf.a
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 SRCS_PATH = srcs/
 OBJS_PATH = objs/
 #BONUS_SRCS_PATH = bonus/srcs/
@@ -12,9 +12,9 @@ BLUE 	:= \e[34m
 RESET 	:= \e[0m
 MAKEFLAGS    +=    --no-print-directory
 
-SRCS = string_functions.c /
-SRCS_SERVER = server.c /
-SRCS_CLIENT = client.c /
+SRCS = pattern_messages.c
+SRCS_SERVER = server.c
+SRCS_CLIENT = client.c
 
 #BONUS_SRCS = 
 

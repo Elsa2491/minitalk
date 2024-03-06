@@ -20,7 +20,6 @@ $(OBJS_PATH):
 $(NAME): $(OBJ)
 	ar -rcs $(NAME) $(OBJ)
 
-
 clean:
 	/bin/rm -rf $(OBJ)
 	/bin/rm -rf $(OBJS_PATH)
