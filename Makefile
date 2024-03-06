@@ -13,9 +13,10 @@ BLUE 	:= \e[34m
 RESET 	:= \e[0m
 MAKEFLAGS    +=    --no-print-directory
 
-SRCS = pattern_messages.c
+SRCS = pattern_messages.c error_messages.c 
 SRCS_SERVER = server.c
-SRCS_CLIENT = client.c
+SRCS_CLIENT = client.c pattern_messages.c error_messages.c check_params.c
+
 
 BONUS_SRCS_SERVER = server_bonus.c
 BONUS_SRCS_CLIENT = client_bonus.c

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 16:35:09 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/06 05:40:42 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/06 14:44:41 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,9 @@
 
 void	ft_print_header(void);
 void	ft_print_footer(void);
+void	ft_print_server_error_msg(void);
+void	ft_print_client_error_msg(void);
+void	ft_print_wrong_pid_msg(void);
+int		ft_is_digit(char *str, int n);
+int		ft_atoi(char *str);
 #endif
