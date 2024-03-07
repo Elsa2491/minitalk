@@ -39,7 +39,6 @@ void    ft_send_message(pid_t pid, char *msg)
 		i++;
 	}
 	ft_send_bits(pid, ' ');
-	ft_send_bits(pid, '\0');
 }
 
 void	ft_confirm(int signal)
@@ -87,25 +86,7 @@ int    main(int argc, char **argv)
 	}
 	pid = ft_atoi(argv[1]);
 	while (i < argc && argv[i][0] != '\0')
-	{
-		ft_send_message(pid, argv[i]);
-		i += 1;
-	}
-
+		ft_send_message(pid, argv[i++]);
+	ft_send_bits(pid, '\0');
 	return (0);
 }
-
-/*
-
-   if (argc !=)	1 - on stock le pid_server
-   c'est un int -> convertir en char
-   itoa(getpid());
-   2 - quelque soit la valeur de argv[1], argv[1] = pid_server (converti en char)
-   ici on fait un strcmp, si ça return 1
-   ici on écrase argv[1], quelle que soit sa valeur
-   sinon
-   ici on écrase argv[1], quelle que soit sa valeur
-   3 - reconverti pid_server_char -> en int
-   atoi(argv[1]);
-
-   }*/
