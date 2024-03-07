@@ -48,12 +48,9 @@ int	main(int argc, char **argv)
 		ft_print_client_error_msg();
 	if (!ft_is_digit(argv[1], 6))
 		ft_print_wrong_pid_msg();
-	while (i < argc)
-	{
-		pid = ft_atoi(argv[1]);
-		ft_send_message(pid, argv[i]);
-		i += 1;
-	}
+	pid = ft_atoi(argv[1]);
+	while (i < argc && argv[i][0] != '\0')
+		ft_send_message(pid, argv[i++]);
 	ft_send_bits(pid, '\n');
 	return (0);
 }

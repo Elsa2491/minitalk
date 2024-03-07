@@ -56,7 +56,7 @@ int	ft_atoi(char *str)
 
 	i = 0;
 	base = 0;
-	while (str[i] == 32 || (str[i] >= 48 && str[i] <= 57))
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i += 1;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -74,8 +74,10 @@ int	ft_atoi(char *str)
 int    main(int argc, char **argv)
 {
 	pid_t    pid;
-	int        i = 2;
-
+	int        i;
+	
+	i = 2;
+	signal(SIGUSR1, ft_confirm);
 	if (argc <= 2)
 	{
 		ft_printf(2, "Error: invalid arguments.\n");
@@ -83,10 +85,9 @@ int    main(int argc, char **argv)
 				"Try this instead: ./client <SERVER_PID> <MESSAGE>\n");
 		return (1);
 	}
-	signal(SIGUSR1, ft_confirm);
+	pid = ft_atoi(argv[1]);
 	while (i < argc && argv[i][0] != '\0')
 	{
-		pid = ft_atoi(argv[1]);
 		ft_send_message(pid, argv[i]);
 		i += 1;
 	}

@@ -3,7 +3,7 @@ CLIENT = client
 BONUS_SERVER = server_bonus
 BONUS_CLIENT = client_bonus
 PRINTF = ./printf/libftprintf.a
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 SRCS_PATH = srcs/
 OBJS_PATH = objs/
 BONUS_SRCS_PATH = bonus/srcs/
@@ -28,15 +28,7 @@ OBJ_CLIENT = $(addprefix $(OBJS_PATH), $(SRCS_CLIENT:.c=.o))
 BONUS_OBJ_SERVER = $(addprefix $(BONUS_OBJS_PATH), $(BONUS_SRCS_SERVER:.c=.o))
 BONUS_OBJ_CLIENT = $(addprefix $(BONUS_OBJS_PATH), $(BONUS_SRCS_CLIENT:.c=.o))
 
-#BONUS_OBJ = $(addprefix $(BONUS_OBJS_PATH), $(BONUS_SRCS:.c=.o))
-
 all: $(SERVER) $(CLIENT)
-
-#$(OBJS_PATH):
-#	@mkdir -p $(OBJS_PATH)
-
-#$(BONUS_OBJS_PATH):
-#	@mkdir -p $(BONUS_OBJS_PATH)
 
 $(OBJS_PATH)%.o: $(SRCS_PATH)%.c
 	@mkdir -p $(dir $@)
@@ -72,13 +64,6 @@ $(BONUS_CLIENT): $(BONUS_OBJ_CLIENT)
 	make --no-print-directory -C "./printf"
 	cc $(CFLAGS) $(BONUS_OBJ_CLIENT) -Inc $(PRINTF) -o $(BONUS_CLIENT)
 	@echo "\nCompilation $(BLUE)client $(GREEN)finished$(RESET)!\n"
-
-
-#$(BONUS_NAME): $(BONUS_OBJS_PATH) $(BONUS_OBJ)
-#	@echo "\nCompilation bonus part: $(GREEN)success$(RESET)\n"
-#	cc $(CFLAGS) $(BONUS_OBJ) -Inc $(PRINTF) -Inc $(MLX) -Lminilibx-linux -lX11 -lXext -o $(BONUS_NAME)
-#	@echo "\nCompilation minilibx: $(GREEN)success$(RESET)\n"
-#	@echo "\nCompilation $(GREEN)finished$(RESET)!\n"
 
 bonus:
 	@make $(BONUS_SERVER) $(BONUS_CLIENT)
