@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 06:22:29 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/10 17:03:50 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/10 17:16:28 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,28 @@ int	ft_atoi(char *str)
 	return (base);
 }
 
+int     main(int argc, char **argv)
+{
+	pid_t	pid;
+	int	i;
+        struct sigaction        sig_action;
+
+       	i = 2;
+	signal(SIGUSR1, ft_confirm);
+	if (argc < 3)
+		ft_print_client_error_msg();
+	pid = ft_atoi(argv[1]);
+        sig_action.sa_sigaction = &ft_handle_signal;
+        sig_action.sa_flags = SA_SIGINFO;
+        sigemptyset(&sig_action.sa_mask);
+        while (1)
+        {
+                sigaction(SIGUSR1, &sig_action, NULL);
+                sigaction(SIGUSR2, &sig_action, NULL);
+        }
+        return (0);
+}
+/*
 int    main(int argc, char **argv)
 {
 	pid_t    pid;
@@ -101,4 +123,4 @@ int    main(int argc, char **argv)
 		ft_send_message(pid, argv[i++]);
 	ft_send_bits(pid, '\0');
 	return (0);
-}
+}*?

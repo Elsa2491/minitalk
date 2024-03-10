@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 06:20:01 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/10 16:37:02 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/10 17:12:36 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_putchar_fd(int fd, char c)
 
 void	ft_ask_server_pid(void)
 {
-	ft_printf(1, "server_bonus pid: %d\n\n", getpid());
+	ft_printf(1, "Server PID\033[%dm %d\n\n\033[0m", 33, getpid());
 }
 
 void    ft_handle_signal(int signal, siginfo_t *info,  void __attribute__((unused))*s)
