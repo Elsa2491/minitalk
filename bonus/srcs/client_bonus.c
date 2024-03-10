@@ -6,13 +6,13 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 06:22:29 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/10 16:22:11 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/10 17:03:50 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
-void    ft_send_bits(pid_t pid, char c)
+/*void    ft_send_bits(pid_t pid, char c)
 {
 	int	i;
 	unsigned char	bits;
@@ -29,8 +29,8 @@ void    ft_send_bits(pid_t pid, char c)
 		i -= 1;
 	}
 }
+*/
 
-/*
 void    ft_send_bits(pid_t pid, char c)
 {
 	int    bit;
@@ -46,7 +46,7 @@ void    ft_send_bits(pid_t pid, char c)
 		bit += 1;
 	}
 }
-*/
+
 
 void    ft_send_message(pid_t pid, char *msg)
 {
@@ -78,10 +78,7 @@ int	ft_atoi(char *str)
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i += 1;
 	if (str[i] == '+' || str[i] == '-')
-	{
-		ft_printf(2, "PID can't be negative.\n");
-		exit (1);
-	}
+		ft_print_wrong_pid_msg();
 	while (str[i] >= 48 && str[i] <= 57)
 	{
 		base = base * 10 + str[i] - 48;
