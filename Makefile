@@ -17,14 +17,15 @@ SRCS = pattern_messages.c error_messages.c
 SRCS_SERVER = server.c
 SRCS_CLIENT = client.c pattern_messages.c error_messages.c check_params.c
 
-
+BONUS = pattern_messages_bonus.c error_messages_bonus.c
 BONUS_SRCS_SERVER = server_bonus.c
-BONUS_SRCS_CLIENT = client_bonus.c
+BONUS_SRCS_CLIENT = client_bonus.c error_messages_bonus.c pattern_messages_bonus.c
 
 OBJ = $(addprefix $(OBJS_PATH), $(SRCS:.c=.o))
 OBJ_SERVER = $(addprefix $(OBJS_PATH), $(SRCS_SERVER:.c=.o))
 OBJ_CLIENT = $(addprefix $(OBJS_PATH), $(SRCS_CLIENT:.c=.o))
 
+BONUS_OBJ = $(addprefix $(BONUS_OBJS_PATH), $(BONUS:.c=.o))
 BONUS_OBJ_SERVER = $(addprefix $(BONUS_OBJS_PATH), $(BONUS_SRCS_SERVER:.c=.o))
 BONUS_OBJ_CLIENT = $(addprefix $(BONUS_OBJS_PATH), $(BONUS_SRCS_CLIENT:.c=.o))
 
@@ -53,10 +54,10 @@ $(CLIENT): $(OBJ_CLIENT)
 
 
 
-$(BONUS_SERVER): $(BONUS_OBJ_PATH) $(BONUS_OBJ_SERVER)
+$(BONUS_SERVER): $(BONUS_OBJ_PATH) $(BONUS_OBJ_SERVER) $(BONUS_OBJ)
 	@echo "\nCompilation mandatory part server: $(GREEN)success$(RESET)\n"
 	make --no-print-directory -C "./printf"
-	cc $(CFLAGS) $(BONUS_OBJ_SERVER) -Inc $(PRINTF) -o $(BONUS_SERVER)
+	cc $(CFLAGS) $(BONUS_OBJ_SERVER) $(BONUS_OBJ) -Inc $(PRINTF) -o $(BONUS_SERVER)
 	@echo "\nCompilation $(BLUE)server $(GREEN)finished$(RESET)!\n"
 
 $(BONUS_CLIENT): $(BONUS_OBJ_CLIENT)

@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 06:20:01 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/06 06:52:45 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/10 16:37:02 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,6 @@ void    ft_handle_signal(int signal, siginfo_t *info,  void __attribute__((unuse
 		bit = 0;
 		c = 0;
 	}
-}
-
-int	ft_print_server_error_msg(void)
-{
-	ft_printf(1, "warning, invalid arg %d\n\n", getpid());
-	// Add error msg cf: fractol
-	return (1);
 }
 
 int	main(int argc, char **argv)

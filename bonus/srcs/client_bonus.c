@@ -6,12 +6,31 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 06:22:29 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/06 06:55:44 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/10 16:22:11 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk_bonus.h"
 
+void    ft_send_bits(pid_t pid, char c)
+{
+	int	i;
+	unsigned char	bits;
+
+	i = 7;
+	while (i >= 0)
+	{
+		bits = (bits >> i) & 1;
+		if (c == 1)
+			kill(pid, SIGUSR1);
+		else
+			kill(pid, SIGUSR2);
+		usleep(200);
+		i -= 1;
+	}
+}
+
+/*
 void    ft_send_bits(pid_t pid, char c)
 {
 	int    bit;
@@ -27,6 +46,7 @@ void    ft_send_bits(pid_t pid, char c)
 		bit += 1;
 	}
 }
+*/
 
 void    ft_send_message(pid_t pid, char *msg)
 {
@@ -77,13 +97,8 @@ int    main(int argc, char **argv)
 	
 	i = 2;
 	signal(SIGUSR1, ft_confirm);
-	if (argc <= 2)
-	{
-		ft_printf(2, "Error: invalid arguments.\n");
-		ft_printf(2,
-				"Try this instead: ./client <SERVER_PID> <MESSAGE>\n");
-		return (1);
-	}
+	if (argc < 3)
+		ft_print_client_error_msg();
 	pid = ft_atoi(argv[1]);
 	while (i < argc && argv[i][0] != '\0')
 		ft_send_message(pid, argv[i++]);

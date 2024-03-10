@@ -6,7 +6,7 @@
 /*   By: eltouma <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 06:17:48 by eltouma           #+#    #+#             */
-/*   Updated: 2024/03/06 06:31:14 by eltouma          ###   ########.fr       */
+/*   Updated: 2024/03/10 16:39:36 by eltouma          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,7 @@
 
 void	ft_print_header(void);
 void	ft_print_footer(void);
+void	ft_print_server_error_msg(void);
+void	ft_print_client_error_msg(void);
+void	ft_print_wrong_pid_msg(void);
 #endif
